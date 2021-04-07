@@ -1,5 +1,6 @@
 package sk.stuba.fei.uim.oop.MazeGame;
 
+
 import sk.stuba.fei.uim.oop.Buttons.*;
 
 import javax.swing.*;
@@ -7,7 +8,6 @@ import java.awt.*;
 
 public class Game extends JFrame {
     private JPanel controls;
-    private MazeGenerator canvas;
     public void drawGUI() {
         JFrame frame=new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,13 +24,13 @@ public class Game extends JFrame {
 
     private JPanel buttonPanel() {
         JPanel panel = new JPanel();
+        panel.add(new GenerateButton().GenerateButton());
         panel.setLayout(new GridLayout(0,3));
-        panel.add(new JButton());
-        panel.add(new JButton());
+        panel.add(new UpButton().UpButton());
         panel.add(new JTextArea("you won :"+" game"));
-        panel.add(new JButton());
-        panel.add(new JButton());
-        panel.add(new JButton());
+        panel.add(new LeftButton().LeftButton());
+        panel.add(new DownButton().DownButton());
+        panel.add(new RightButton().rightButton());
         return panel;
     }
 }

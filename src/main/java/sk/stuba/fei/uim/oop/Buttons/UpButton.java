@@ -6,11 +6,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class UpButton extends JFrame implements ActionListener {
-    public JButton upButton(){
-        JButton generate = new JButton("↑");
-        generate.addActionListener(this);
-        return generate;
+public class UpButton extends JButton implements ActionListener {
+    public JButton UpButton(){
+        JButton upButton = new JButton("↑");
+        upButton.addActionListener(this);
+        return upButton;
     }
 
     @Override

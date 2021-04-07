@@ -7,9 +7,10 @@ import java.awt.event.ActionListener;
 
 public class GenerateButton extends JButton implements ActionListener {
 
-    public GenerateButton(){
-        super("Generate");
-        addActionListener(this);
+    public JButton GenerateButton(){
+        JButton generateButton = new JButton("Generate");
+        generateButton.addActionListener(this);
+        return generateButton;
 
     }
     @Override

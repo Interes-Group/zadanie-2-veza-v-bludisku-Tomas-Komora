@@ -9,8 +9,8 @@ public class Assignment2 {
         mazeGenerator.generateMaze();
         //System.out.println("RAW MAZE\n" + mazeGenerator.getRawMaze());
         mazeGenerator.okraj(11);
-       // Game game=new Game();
-        //game.drawGUI();
+        Game game=new Game();
+        game.drawGUI();
 
     }
 }

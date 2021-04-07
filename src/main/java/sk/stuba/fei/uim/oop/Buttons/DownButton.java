@@ -8,10 +8,10 @@ import java.awt.event.ActionListener;
 
 public class DownButton extends JButton implements ActionListener {
 
-    public DownButton() {
-        super("↓");
-        addActionListener(this);
-
+    public JButton DownButton() {
+        JButton downButton = new JButton("↓");
+        downButton.addActionListener(this);
+        return downButton;
     }
 
     @Override

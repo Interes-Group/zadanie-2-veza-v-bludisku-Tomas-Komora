@@ -4,11 +4,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RightButton extends JFrame implements ActionListener {
+public class RightButton extends JButton implements ActionListener {
     public JButton rightButton(){
-        JButton generate = new JButton("→");
-        generate.addActionListener(this);
-        return generate;
+        JButton rightButton = new JButton("→");
+        rightButton.addActionListener(this);
+        return rightButton;
     }
 
     @Override

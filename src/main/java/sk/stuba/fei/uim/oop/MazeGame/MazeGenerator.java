@@ -29,27 +29,6 @@ public class MazeGenerator {
         }
     }
 
-    public String getRawMaze() {
-        StringBuilder sb = new StringBuilder();
-        for (int[] row : maze) {
-            sb.append(Arrays.toString(row) + "\n");
-        }
-        return sb.toString();
-    }
-
-    public void print(int dim){
-        for(int x=0;x<dim;x++){
-            for(int y=0;y<dim;y++){
-                if(maze[x][y]==1){
-                    System.out.print("1");
-                }
-                else{
-                    System.out.print("0");
-                }
-            }
-            System.out.println("\n");
-        }
-    }
 
     public void okraj(int dim){
         int[][] newMaze= new int[dim+2][dim+2];
@@ -58,9 +37,7 @@ public class MazeGenerator {
             newMaze[dim][i]=0;
         }
         for(int x=1;x<dim+1;x++) {
-            for (int y = 1; y < dim+1; y++) {
-                newMaze[x][y]=maze[x-1][y-1];
-            }
+            System.arraycopy(maze[x - 1], 0, newMaze[x], 1, dim + 1 - 1);
         }
         for(int x=0;x<dim+2;x++){
             for(int y=0;y<dim+2;y++){
