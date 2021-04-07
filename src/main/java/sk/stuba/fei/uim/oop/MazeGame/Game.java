@@ -8,14 +8,17 @@ import java.awt.*;
 
 public class Game extends JFrame {
     private JPanel controls;
-    public void drawGUI() {
+    private Canvas canvas;
+    public void drawGUI(int[][] maze) {
+        int[][] helpMaze= maze;
         JFrame frame=new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         controls = buttonPanel();
+        canvas = new MyCanvas(helpMaze);
         frame.add(controls, BorderLayout.EAST);
-        //frame.add(canvas, BorderLayout.CENTER);
-        frame.setSize(900,600);
+        frame.add(canvas, BorderLayout.CENTER);
+        frame.setSize(700,420);
         frame.setTitle("Maze Game");
         frame.setResizable(true);
         frame.setLocationRelativeTo(null);

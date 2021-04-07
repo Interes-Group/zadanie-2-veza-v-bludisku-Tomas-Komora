@@ -30,12 +30,14 @@ public class MazeGenerator {
     }
 
 
-    public void okraj(int dim){
+    public int[][] okraj(int dim){
         int[][] newMaze= new int[dim+2][dim+2];
         for(int i=0;i<dim;i++){
             newMaze[0][i]=0;
             newMaze[dim][i]=0;
         }
+        newMaze[0][1]=2;
+        newMaze[12][11]=2;
         for(int x=1;x<dim+1;x++) {
             System.arraycopy(maze[x - 1], 0, newMaze[x], 1, dim + 1 - 1);
         }
@@ -50,7 +52,7 @@ public class MazeGenerator {
             }
             System.out.println();
         }
-
+        return newMaze;
 
     }
     private boolean validNextNode(Node node) {
