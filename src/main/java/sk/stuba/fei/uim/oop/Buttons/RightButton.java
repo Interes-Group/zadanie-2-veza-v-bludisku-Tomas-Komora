@@ -34,7 +34,7 @@ public class RightButton extends JButton implements ActionListener {
                 mazeA[positionX][positionY]=1;
                 mazeA[positionX][positionY+1]=3;
             }
-            repaint();
+
         }
     }
 }

@@ -10,6 +10,13 @@ public class Game extends JFrame {
     private JPanel controls;
     private Canvas canvas;
     private int[][]helpMaze;
+
+    public void game(){
+        MazeGenerator mazeGenerator = new MazeGenerator(11);
+        int[][]maze =mazeGenerator.generateMaze(11);
+        drawGUI(maze);
+    }
+
     public void drawGUI(int[][] maze) {
         helpMaze= maze;
         JFrame frame=new JFrame();
@@ -25,7 +32,6 @@ public class Game extends JFrame {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
-
     private JPanel buttonPanel() {
         JPanel panel = new JPanel();
         panel.add(new GenerateButton().GenerateButton(helpMaze));

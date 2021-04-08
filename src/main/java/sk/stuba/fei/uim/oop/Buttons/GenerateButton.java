@@ -10,27 +10,24 @@ import java.awt.event.ActionListener;
 public class GenerateButton extends JButton implements ActionListener {
     private int[][] newMaze;
     MazeGenerator mazeGenerator = new MazeGenerator(11);
+
     public JButton GenerateButton(int[][] maze){
         newMaze =maze;
         JButton generateButton = new JButton("Generate");
         generateButton.addActionListener(this);
         return generateButton;
-
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        for(int x= 0; x <13;x++){
-            for(int y=0;y<13;y++){
-                newMaze[x][y]=0;
-            }
-        }
-        //mazeGenerator.generateMaze();
-
         if(e.getActionCommand().equals("Generate")){
-            newMaze =mazeGenerator.okraj(11);
-            repaint();
-        }
+            for(int x= 0; x <13;x++){
+                for(int y=0;y<13;y++){
+                    newMaze[x][y]=0;
+                }
+            }
+            newMaze =mazeGenerator.generateMaze(11);
 
         }
+    }
 }
 

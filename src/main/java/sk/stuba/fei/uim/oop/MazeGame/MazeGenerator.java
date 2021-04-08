@@ -3,7 +3,7 @@ package sk.stuba.fei.uim.oop.MazeGame;
 import java.util.ArrayList;
 import java.util.Stack;
 import java.util.Random;
-import java.util.Arrays;
+
 
 public class MazeGenerator {
 
@@ -15,9 +15,11 @@ public class MazeGenerator {
     public MazeGenerator(int dim) {
         maze = new int[dim][dim];
         dimension = dim;
+
+
     }
 
-    public void generateMaze() {
+    public void generateMazeCernel() {
         stack.push(new Node(0,0));
         while (!stack.empty()) {
             Node next = stack.pop();
@@ -30,9 +32,9 @@ public class MazeGenerator {
     }
 
 
-    public int[][] okraj(int dim){
+    public int[][] generateMaze(int dim){
+        generateMazeCernel();
         int[][] newMaze= new int[dim+2][dim+2];
-        generateMaze();
         for(int i=0;i<dim;i++){
             newMaze[0][i]=0;
             newMaze[dim][i]=0;
@@ -54,8 +56,9 @@ public class MazeGenerator {
             System.out.println();
         }
         return newMaze;
-
     }
+
+
     private boolean validNextNode(Node node) {
         int numNeighboringOnes = 0;
         for (int y = node.y-1; y < node.y+2; y++) {

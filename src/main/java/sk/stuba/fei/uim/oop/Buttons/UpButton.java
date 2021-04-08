@@ -32,13 +32,13 @@ public class UpButton extends JButton implements ActionListener {
             }
         }
         if (e.getActionCommand().equals("↑")) {
-            if (positionY - 1 > 0) {
-                if (mazeA[positionX - 1][positionY] == 1) {
+            if (positionX - 1 >= 0) {
+                if (mazeA[positionX - 1][positionY] == 1 || mazeA[positionX - 1][positionY] == 2) {
                     mazeA[positionX][positionY] = 1;
                     mazeA[positionX - 1][positionY] = 3;
 
                 }
-                repaint();
+
             }
         }
     }

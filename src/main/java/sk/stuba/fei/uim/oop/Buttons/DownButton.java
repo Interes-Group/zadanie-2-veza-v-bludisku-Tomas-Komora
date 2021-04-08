@@ -34,14 +34,16 @@ public class DownButton extends JButton implements ActionListener {
             }
         }
         if (e.getActionCommand().equals("↓")) {
-            if(mazeA[positionX+1][positionY]==1 &&positionX+1>=0){
-                mazeA[positionX][positionY]=1;
-                mazeA[positionX+1][positionY]=3;
-                if(mazeA[0][1]==1){
-                    mazeA[0][1]=2;
+            if (positionX + 1 < 13) {
+                if (mazeA[positionX + 1][positionY] == 1 || mazeA[positionX + 1][positionY] == 2) {
+                    mazeA[positionX][positionY] = 1;
+                    mazeA[positionX + 1][positionY] = 3;
+                    if (mazeA[0][1] == 1) {
+                        mazeA[0][1] = 2;
+                    }
                 }
+
             }
-            repaint();
         }
     }
 

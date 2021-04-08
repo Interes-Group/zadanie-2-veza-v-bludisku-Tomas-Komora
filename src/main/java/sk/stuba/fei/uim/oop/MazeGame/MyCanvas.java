@@ -35,7 +35,6 @@ public class MyCanvas extends Canvas {
                     g.setColor(Color.RED);
                     g.fillRect(z*x,s*y,x,y);
                 }
-
             }
         }
         repaint();
