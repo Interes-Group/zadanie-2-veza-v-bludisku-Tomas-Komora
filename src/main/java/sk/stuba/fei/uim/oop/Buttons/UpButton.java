@@ -2,44 +2,32 @@ package sk.stuba.fei.uim.oop.Buttons;
 
 
 
+import sk.stuba.fei.uim.oop.MazeGame.Game;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UpButton extends JButton implements ActionListener {
-    private int[][]mazeA;
-    public JButton UpButton(int [][]maze){
-        mazeA=maze;
-        JButton upButton = new JButton("↑");
-        upButton.addActionListener(this);
-        return upButton;
+    private Game newGame;
+    public UpButton(Game game){
+        super("↑");
+        this.newGame=game;
+        addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int positionX=0;
-        for(int x=0;x<13;x++){
-            for(int y=0;y<13;y++){
-                if(mazeA[x][y]==3)
-                    positionX= x;
-            }
-        }
-        int positionY = 0;
-        for(int x=0;x<13;x++){
-            for(int y=0;y<13;y++){
-                if(mazeA[x][y]==3)
-                    positionY= y;
-            }
-        }
-        if (e.getActionCommand().equals("↑")) {
+        int positionX=newGame.getPlayerPositionX();
+        int positionY = newGame.getPlayerPositionY();
+
             if (positionX - 1 >= 0) {
-                if (mazeA[positionX - 1][positionY] == 1 || mazeA[positionX - 1][positionY] == 2) {
-                    mazeA[positionX][positionY] = 1;
-                    mazeA[positionX - 1][positionY] = 3;
+                if (newGame.getMaze()[positionX - 1][positionY] == 1 || newGame.getMaze()[positionX - 1][positionY] == 2) {
+                    newGame.getMaze()[positionX][positionY] = 1;
+                    newGame.getMaze()[positionX - 1][positionY] = 3;
 
                 }
-
             }
-        }
+
     }
 }

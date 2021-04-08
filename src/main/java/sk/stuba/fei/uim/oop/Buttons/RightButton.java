@@ -1,40 +1,28 @@
 package sk.stuba.fei.uim.oop.Buttons;
 
+import sk.stuba.fei.uim.oop.MazeGame.Game;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class RightButton extends JButton implements ActionListener {
-    private int[][]mazeA;
-    public JButton rightButton(int [][]maze){
-        mazeA=maze;
-        JButton rightButton = new JButton("→");
-        rightButton.addActionListener(this);
-        return rightButton;
+    private Game newGame;
+    public RightButton(Game game){
+        super("→");
+        newGame=game;
+        addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int positionX=0;
-        for(int x=0;x<13;x++){
-            for(int y=0;y<13;y++){
-                if(mazeA[x][y]==3)
-                    positionX= x;
-            }
-        }
-        int positionY = 0;
-        for(int x=0;x<13;x++){
-            for(int y=0;y<13;y++){
-                if(mazeA[x][y]==3)
-                    positionY= y;
-            }
-        }
-        if (e.getActionCommand().equals("→")){
-            if(mazeA[positionX][positionY+1]==1 && positionY+1>=0){
-                mazeA[positionX][positionY]=1;
-                mazeA[positionX][positionY+1]=3;
+        int positionX= newGame.getPlayerPositionX();
+        int positionY = newGame.getPlayerPositionY();
+
+            if(newGame.getMaze()[positionX][positionY+1]==1 && positionY+1>=0){
+                newGame.getMaze()[positionX][positionY]=1;
+                newGame.getMaze()[positionX][positionY+1]=3;
             }
 
-        }
     }
 }

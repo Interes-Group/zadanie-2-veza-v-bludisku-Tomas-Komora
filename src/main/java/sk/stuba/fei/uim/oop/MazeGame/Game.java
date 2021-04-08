@@ -9,21 +9,24 @@ import java.awt.*;
 public class Game extends JFrame {
     private JPanel controls;
     private Canvas canvas;
-    private int[][]helpMaze;
+    private MazeGenerator mazeGenerator;
 
-    public void game(){
-        MazeGenerator mazeGenerator = new MazeGenerator(11);
-        int[][]maze =mazeGenerator.generateMaze(11);
-        drawGUI(maze);
+    public Game(){
+        mazeGenerator = new MazeGenerator();
+        drawGUI();
     }
-
-    public void drawGUI(int[][] maze) {
-        helpMaze= maze;
+    public void generateMaze(){
+        mazeGenerator = new MazeGenerator();
+    }
+    public int[][] getMaze(){
+        return mazeGenerator.getMaze();
+    }
+    public void drawGUI() {
         JFrame frame=new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         controls = buttonPanel();
-        canvas = new MyCanvas(helpMaze);
+        canvas = new MyCanvas(this);
         frame.add(controls, BorderLayout.EAST);
         frame.add(canvas, BorderLayout.CENTER);
         frame.setSize(700,420);
@@ -34,13 +37,35 @@ public class Game extends JFrame {
     }
     private JPanel buttonPanel() {
         JPanel panel = new JPanel();
-        panel.add(new GenerateButton().GenerateButton(helpMaze));
+        panel.add(new GenerateButton(this));
         panel.setLayout(new GridLayout(0,3));
-        panel.add(new UpButton().UpButton(helpMaze));
+        panel.add(new UpButton(this));
         panel.add(new JTextArea("you won :"+" game"));
-        panel.add(new LeftButton().LeftButton(helpMaze));
-        panel.add(new DownButton().DownButton(helpMaze));
-        panel.add(new RightButton().rightButton(helpMaze));
+        panel.add(new LeftButton(this));
+        panel.add(new DownButton(this));
+        panel.add(new RightButton(this));
         return panel;
+    }
+
+    public int getPlayerPositionX(){
+        int positionX=0;
+        for(int x=0;x<13;x++){
+            for(int y=0;y<13;y++){
+                if(mazeGenerator.getMaze()[x][y]==3)
+                    positionX= x;
+            }
+        }
+        return positionX;
+    }
+    public int getPlayerPositionY(){
+        int positionY = 0;
+        for(int x=0;x<13;x++){
+            for(int y=0;y<13;y++){
+                if(mazeGenerator.getMaze()[x][y]==3) {
+                    positionY = y;
+                }
+            }
+        }
+        return positionY;
     }
 }
