@@ -27,11 +27,17 @@ public class MyCanvas extends Canvas {
                     g.setColor(Color.BLACK);
                     g.fillRect(z*x,s*y,x,y);
                 }
+                else if(maze[s][z]==3){
+                    g.setColor(Color.green);
+                    g.fillRect(z*x,s*y,x,y);
+                }
                 else {
                     g.setColor(Color.RED);
                     g.fillRect(z*x,s*y,x,y);
                 }
+
             }
         }
+        repaint();
     }
 }

@@ -9,8 +9,9 @@ import java.awt.*;
 public class Game extends JFrame {
     private JPanel controls;
     private Canvas canvas;
+    private int[][]helpMaze;
     public void drawGUI(int[][] maze) {
-        int[][] helpMaze= maze;
+        helpMaze= maze;
         JFrame frame=new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
@@ -27,13 +28,13 @@ public class Game extends JFrame {
 
     private JPanel buttonPanel() {
         JPanel panel = new JPanel();
-        panel.add(new GenerateButton().GenerateButton());
+        panel.add(new GenerateButton().GenerateButton(helpMaze));
         panel.setLayout(new GridLayout(0,3));
-        panel.add(new UpButton().UpButton());
+        panel.add(new UpButton().UpButton(helpMaze));
         panel.add(new JTextArea("you won :"+" game"));
-        panel.add(new LeftButton().LeftButton());
-        panel.add(new DownButton().DownButton());
-        panel.add(new RightButton().rightButton());
+        panel.add(new LeftButton().LeftButton(helpMaze));
+        panel.add(new DownButton().DownButton(helpMaze));
+        panel.add(new RightButton().rightButton(helpMaze));
         return panel;
     }
 }

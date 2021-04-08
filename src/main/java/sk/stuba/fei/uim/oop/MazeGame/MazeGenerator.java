@@ -32,11 +32,12 @@ public class MazeGenerator {
 
     public int[][] okraj(int dim){
         int[][] newMaze= new int[dim+2][dim+2];
+        generateMaze();
         for(int i=0;i<dim;i++){
             newMaze[0][i]=0;
             newMaze[dim][i]=0;
         }
-        newMaze[0][1]=2;
+        newMaze[0][1]=3;
         newMaze[12][11]=2;
         for(int x=1;x<dim+1;x++) {
             System.arraycopy(maze[x - 1], 0, newMaze[x], 1, dim + 1 - 1);
@@ -87,6 +88,7 @@ public class MazeGenerator {
         }
         return neighbors;
     }
+
 
     private Boolean pointOnGrid(int x, int y) {
         return x >= 0 && y >= 0 && x < dimension && y < dimension;
