@@ -19,11 +19,11 @@ public class LeftButton extends JButton implements ActionListener {
         int positionX= newGame.getPlayerPositionX();
         int positionY = newGame.getPlayerPositionY();
 
-        if (e.getActionCommand().equals("←")){
+
             if(newGame.getMaze()[positionX][positionY-1]==1 && positionY-1>=0){
                 newGame.getMaze()[positionX][positionY]=1;
                 newGame.getMaze()[positionX][positionY-1]=3;
             }
-        }
+
     }
 }

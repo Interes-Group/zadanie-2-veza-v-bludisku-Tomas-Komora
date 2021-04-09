@@ -47,7 +47,7 @@ public class MazeGenerator {
         for(int x=1;x<dim+1;x++) {
             System.arraycopy(mazeIntro[x - 1], 0, maze[x], 1, dim + 1 - 1);
         }
-        for(int x=0;x<dim+2;x++){
+        /*for(int x=0;x<dim+2;x++){
             for(int y=0;y<dim+2;y++){
                 if(maze[x][y]==1){
                     System.out.print("1");
@@ -57,7 +57,7 @@ public class MazeGenerator {
                 }
             }
             System.out.println();
-        }
+        }*/
     }
 
     public int[][] getMaze() {

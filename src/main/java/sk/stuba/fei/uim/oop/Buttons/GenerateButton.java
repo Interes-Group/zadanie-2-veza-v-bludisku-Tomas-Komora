@@ -21,7 +21,7 @@ public class GenerateButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         newGame.generateMaze();
-
+        newGame.setGameWins(0);
     }
 }
 
