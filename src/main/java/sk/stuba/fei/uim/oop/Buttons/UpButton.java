@@ -3,6 +3,7 @@ package sk.stuba.fei.uim.oop.Buttons;
 
 
 import sk.stuba.fei.uim.oop.MazeGame.Game;
+import sk.stuba.fei.uim.oop.MazeGame.MovingKeyboard;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,13 +23,13 @@ public class UpButton extends JButton implements ActionListener {
         int positionX=newGame.getPlayerPositionX();
         int positionY = newGame.getPlayerPositionY();
 
-            if (positionX - 1 >= 0) {
-                if (newGame.getMaze()[positionX - 1][positionY] == 1 || newGame.getMaze()[positionX - 1][positionY] == 2) {
-                    newGame.getMaze()[positionX][positionY] = 1;
-                    newGame.getMaze()[positionX - 1][positionY] = 3;
+        if (positionX - 1 >= 0) {
+            if (newGame.getMaze()[positionX - 1][positionY] == 1 || newGame.getMaze()[positionX - 1][positionY] == 2) {
+                newGame.getMaze()[positionX][positionY] = 1;
+                newGame.getMaze()[positionX - 1][positionY] = 3;
 
-                }
             }
+        }
 
     }
 }

@@ -21,7 +21,6 @@ public class DownButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
        int positionX= newGame.getPlayerPositionX();
        int positionY= newGame.getPlayerPositionY();
             if (newGame.getPlayerPositionX()  + 1 < 13) {

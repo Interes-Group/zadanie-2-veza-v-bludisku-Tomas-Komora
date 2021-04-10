@@ -10,7 +10,7 @@ public class Game extends JFrame {
     private JPanel controls;
     private Canvas canvas;
     private MazeGenerator mazeGenerator;
-    private int gameWins;
+    private int gameWins=0;
     private MovingKeyboard movingKeyboard;
 
     public Game(){
@@ -38,7 +38,6 @@ public class Game extends JFrame {
     public void drawGUI() {
         JFrame frame=new JFrame();
         movingKeyboard= new MovingKeyboard(this);
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.add(movingKeyboard);
@@ -57,7 +56,7 @@ public class Game extends JFrame {
         panel.add(new GenerateButton(this));
         panel.setLayout(new GridLayout(0,3));
         panel.add(new UpButton(this));
-        panel.add(new JTextArea("you won :"+gameWins+" game"));
+        panel.add(new CanvasText(this));
         panel.add(new LeftButton(this));
         panel.add(new DownButton(this));
         panel.add(new RightButton(this));

@@ -32,11 +32,13 @@ public class MazeGenerator {
                 randomlyAddNodesToStack(neighbors);
             }
         }
+
     }
 
 
     public void generateMaze(){
         generateMazeKernel();
+
         maze= new int[dim+2][dim+2];
         for(int i=0;i<dim;i++){
             maze[0][i]=0;
@@ -48,7 +50,8 @@ public class MazeGenerator {
             System.arraycopy(mazeIntro[x - 1], 0, maze[x], 1, dim + 1 - 1);
         }
         if(maze[11][11]==0)
-            maze[11][11]=1;
+            generateMaze();
+
         /*for(int x=0;x<dim+2;x++){
             for(int y=0;y<dim+2;y++){
                 if(maze[x][y]==1){
