@@ -15,6 +15,7 @@ public class GenerateButton extends JButton implements ActionListener {
         super("Generate");
         this.newGame=game;
         addActionListener(this);
+        setFocusable(false);
     }
 
 

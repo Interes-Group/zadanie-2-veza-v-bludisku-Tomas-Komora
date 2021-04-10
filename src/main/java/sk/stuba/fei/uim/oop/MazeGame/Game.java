@@ -46,9 +46,8 @@ public class Game extends JFrame {
         canvas = new MyCanvas(this);
         frame.add(controls, BorderLayout.EAST);
         frame.add(canvas, BorderLayout.CENTER);
-        frame.setSize(700,420);
+        frame.setSize(720,420);
         frame.setTitle("Maze Game");
-
         frame.setResizable(true);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

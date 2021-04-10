@@ -12,6 +12,7 @@ public class LeftButton extends JButton implements ActionListener {
         super("←");
         newGame=game;
         addActionListener(this);
+        setFocusable(false);
     }
 
     @Override

@@ -14,6 +14,7 @@ public class UpButton extends JButton implements ActionListener {
         super("↑");
         this.newGame=game;
         addActionListener(this);
+        setFocusable(false);
     }
 
     @Override

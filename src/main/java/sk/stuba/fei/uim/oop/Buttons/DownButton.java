@@ -2,7 +2,7 @@ package sk.stuba.fei.uim.oop.Buttons;
 
 
 import sk.stuba.fei.uim.oop.MazeGame.Game;
-import sk.stuba.fei.uim.oop.MazeGame.MovingKeyboard;
+
 
 import javax.swing.*;
 
@@ -11,10 +11,12 @@ import java.awt.event.ActionListener;
 
 public class DownButton extends JButton implements ActionListener {
     private Game newGame;
+
     public DownButton(Game game){
         super("↓");
         this.newGame=game;
         addActionListener(this);
+        setFocusable(false);
     }
 
     @Override
@@ -37,6 +39,7 @@ public class DownButton extends JButton implements ActionListener {
             newGame.generateMaze();
             newGame.setGameWins(newGame.getGameWins()+1);
         }
+
     }
 
 }
