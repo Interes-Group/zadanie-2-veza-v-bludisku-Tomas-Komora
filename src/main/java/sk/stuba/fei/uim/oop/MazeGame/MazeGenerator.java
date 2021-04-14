@@ -10,16 +10,16 @@ import java.util.Random;
 //3-player
 //4-moving with mouse place where i can go
 public class MazeGenerator {
-    private Game game;
+
     private Stack<Node> stack = new Stack<>();
     private Random rand = new Random();
     private int[][] mazeIntro;
     private int dimension;
-    private int dim =11;
+    
     private int[][] maze;
     public MazeGenerator() {
-        mazeIntro = new int[dim][dim];
-        dimension = dim;
+        mazeIntro = new int[11][11];
+        dimension = 11;
         generateMaze();
         getMaze();
 
@@ -41,15 +41,15 @@ public class MazeGenerator {
 
     private void generateMaze(){
         generateMazeKernel();
-        maze=new int[dim+2][dim+2];
-        for(int i=0;i<dim;i++){
+        maze=new int[13][13];
+        for(int i=0;i<11;i++){
             maze[0][i]=0;
-            maze[dim][i]=0;
+            maze[11][i]=0;
         }
         maze[0][1]=3;
         maze[12][11]=1;
-        for(int x=1;x<dim+1;x++) {
-            System.arraycopy(mazeIntro[x - 1], 0, maze[x], 1, dim + 1 - 1);
+        for(int x=1;x<11+1;x++) {
+            System.arraycopy(mazeIntro[x - 1], 0, maze[x], 1, 11 + 1 - 1);
         }
         if(maze[11][11]==0) {
             maze[11][11]=1;
