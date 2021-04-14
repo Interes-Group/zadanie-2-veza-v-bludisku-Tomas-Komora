@@ -1,8 +1,8 @@
 package sk.stuba.fei.uim.oop.MazeGame;
 
 public class Node {
-    public final int x;
-    public final int y;
+    public int x;
+    public int y;
 
     Node(int x, int y) {
         this.x = x;

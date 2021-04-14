@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.Stack;
 import java.util.Random;
 
-
+//number in maze 2d array
+//0-wall
+//1-path
+//3-player
+//4-moving with mouse place where i can go
 public class MazeGenerator {
-
+    private Game game;
     private Stack<Node> stack = new Stack<>();
     private Random rand = new Random();
     private int[][] mazeIntro;
@@ -35,34 +39,22 @@ public class MazeGenerator {
 
     }
 
-
-    public void generateMaze(){
+    private void generateMaze(){
         generateMazeKernel();
-
-        maze= new int[dim+2][dim+2];
+        maze=new int[dim+2][dim+2];
         for(int i=0;i<dim;i++){
             maze[0][i]=0;
             maze[dim][i]=0;
         }
         maze[0][1]=3;
-        maze[12][11]=2;
+        maze[12][11]=1;
         for(int x=1;x<dim+1;x++) {
             System.arraycopy(mazeIntro[x - 1], 0, maze[x], 1, dim + 1 - 1);
         }
-        if(maze[11][11]==0)
-            generateMaze();
+        if(maze[11][11]==0) {
+            maze[11][11]=1;
+        }
 
-        /*for(int x=0;x<dim+2;x++){
-            for(int y=0;y<dim+2;y++){
-                if(maze[x][y]==1){
-                    System.out.print("1");
-                }
-                else{
-                    System.out.print("0");
-                }
-            }
-            System.out.println();
-        }*/
     }
 
     public int[][] getMaze() {

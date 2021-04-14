@@ -27,9 +27,7 @@ public class DownButton extends JButton implements ActionListener {
                 if (newGame.getMaze()[positionX + 1][positionY] == 1 || newGame.getMaze()[positionX + 1][positionY] == 2) {
                     newGame.getMaze()[positionX][positionY] = 1;
                     newGame.getMaze()[positionX + 1][positionY] = 3;
-                    if (newGame.getMaze()[0][1] == 1) {
-                        newGame.getMaze()[0][1] = 2;
-                    }
+
                 }
 
             }

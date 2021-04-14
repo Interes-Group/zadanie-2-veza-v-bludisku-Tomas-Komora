@@ -2,6 +2,8 @@ package sk.stuba.fei.uim.oop.MazeGame;
 
 
 import sk.stuba.fei.uim.oop.Buttons.*;
+import sk.stuba.fei.uim.oop.Moving.MovingKeyboard;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +14,7 @@ public class Game extends JFrame {
     private MazeGenerator mazeGenerator;
     private int gameWins=0;
     private MovingKeyboard movingKeyboard;
+
 
     public Game(){
         mazeGenerator = new MazeGenerator();
@@ -38,13 +41,16 @@ public class Game extends JFrame {
     public void drawGUI() {
         JFrame frame=new JFrame();
         movingKeyboard= new MovingKeyboard(this);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.add(movingKeyboard);
         controls = buttonPanel();
         canvas = new MyCanvas(this);
+
         frame.add(controls, BorderLayout.EAST);
         frame.add(canvas, BorderLayout.CENTER);
+
         frame.setSize(720,420);
         frame.setTitle("Maze Game");
         frame.setResizable(true);

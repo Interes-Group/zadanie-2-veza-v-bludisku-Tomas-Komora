@@ -3,9 +3,10 @@ package sk.stuba.fei.uim.oop.Buttons;
 
 
 import sk.stuba.fei.uim.oop.MazeGame.Game;
-import sk.stuba.fei.uim.oop.MazeGame.MovingKeyboard;
+
 
 import javax.swing.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
