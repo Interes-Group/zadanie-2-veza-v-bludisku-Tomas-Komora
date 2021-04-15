@@ -29,7 +29,7 @@ public class MovingMouse extends Canvas implements MouseListener, MouseMotionLis
         if(playerPositionX*30<=e.getY() && (playerPositionX+1)*30>=e.getY() &&
                 playerPositionY*30<=e.getX() && (playerPositionY+1)*30>=e.getX()) {
             numberOfClick++;
-            isValidMoveHorizontal();
+            isValidMove();
         }
         if(game.getMaze()[e.getY()/30][e.getX()/30]==4){
             game.getMaze()[playerPositionX][playerPositionY]=path;
@@ -65,25 +65,41 @@ public class MovingMouse extends Canvas implements MouseListener, MouseMotionLis
 
     @Override
     public void mouseDragged(MouseEvent e) {
-
     }
+
+
     private int posX;
     private int posY;
     @Override
     public void mouseMoved(MouseEvent e) {
-        /*ArrayList<Integer[]> horizontal = isValidMoveHorizontal();
-        ArrayList<Integer[]> vertical = isValidMoveVertical();
         if (numberOfClick % 2 == 1) {
             posX = e.getX() / 30;
             posY = e.getY() / 30;
-            for(int i=0; i<horizontal.size();i++){
-
+            ArrayList<Integer[]> position= isValidMove();
+            if (game.getMaze()[posY][posX] == 1 || game.getMaze()[posY][posX] == 2) {
+                for(Integer[] integers : position)
+                    if(integers[0]==posY && integers[1]==posX) {
+                        game.getMaze()[posY][posX] = 4;
+                    }
+            }
+            if (posX > 0 && posY > 0 && posY < 12 && posX < 12) {
+                if (game.getMaze()[posY][posX - 1] == 4) {
+                    game.getMaze()[posY][posX - 1] = 1;
+                } else if (game.getMaze()[posY][posX + 1] == 4) {
+                    game.getMaze()[posY][posX + 1] = 1;
+                } else if (game.getMaze()[posY - 1][posX] == 4) {
+                    game.getMaze()[posY - 1][posX] = 1;
+                } else if (game.getMaze()[posY + 1][posX] == 4) {
+                    game.getMaze()[posY + 1][posX] = 1;
+                }
             }
 
-        }*/
+        }
     }
 
-    private ArrayList<Integer[]> isValidMoveHorizontal(){
+
+
+    private ArrayList<Integer[]> isValidMove(){
         int playerPositionX = game.getPlayerPositionX();
         int playerPositionY = game.getPlayerPositionY();
         ArrayList<Integer[]> validMove = new ArrayList<>();
@@ -124,15 +140,10 @@ public class MovingMouse extends Canvas implements MouseListener, MouseMotionLis
                 playerPositionY--;
             } while (game.getMaze()[playerPositionX][playerPositionY] != wall);
         }
-        System.out.println("HoreDole");
-        for (Integer[] integers : validMove) {
-            for (int y = 0; y < 2; y++) {
-                System.out.print(integers[y]);
-                System.out.print(" ");
-            }
-            System.out.println(" ");
+        for(int i =0; i<validMove.size();i++){
+            if(validMove.get(i)[0]== game.getPlayerPositionX() && validMove.get(i)[1]== game.getPlayerPositionY())
+                validMove.remove(validMove.get(i));
         }
-        System.out.println();
         return validMove;
 
     }
