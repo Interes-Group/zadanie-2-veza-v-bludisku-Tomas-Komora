@@ -9,10 +9,8 @@ public class CanvasText extends Canvas {
     public CanvasText(Game game){
         canvas(game);
     }
-    public Canvas canvas(Game game){
-        Canvas canvas = new Canvas();
+    public void canvas(Game game){
         this.game = game;
-        return canvas;
     }
     @Override
     public void paint(Graphics g) {

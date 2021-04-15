@@ -9,11 +9,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Game extends JFrame {
-    private JPanel controls;
-    private Canvas canvas;
     private MazeGenerator mazeGenerator;
     private int gameWins=0;
-    private MovingKeyboard movingKeyboard;
+    private final int player=3;
 
 
     public Game(){
@@ -40,13 +38,13 @@ public class Game extends JFrame {
 
     public void drawGUI() {
         JFrame frame=new JFrame();
-        movingKeyboard= new MovingKeyboard(this);
+        MovingKeyboard movingKeyboard = new MovingKeyboard(this);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.add(movingKeyboard);
-        controls = buttonPanel();
-        canvas = new MyCanvas(this);
+        JPanel controls = buttonPanel();
+        Canvas canvas = new MyCanvas(this);
 
         frame.add(controls, BorderLayout.EAST);
         frame.add(canvas, BorderLayout.CENTER);
@@ -73,7 +71,7 @@ public class Game extends JFrame {
         int positionX=0;
         for(int x=0;x<13;x++){
             for(int y=0;y<13;y++){
-                if(mazeGenerator.getMaze()[x][y]==3)
+                if(mazeGenerator.getMaze()[x][y]==player)
                     positionX= x;
             }
         }
@@ -83,7 +81,7 @@ public class Game extends JFrame {
         int positionY = 0;
         for(int x=0;x<13;x++){
             for(int y=0;y<13;y++){
-                if(mazeGenerator.getMaze()[x][y]==3) {
+                if(mazeGenerator.getMaze()[x][y]==player) {
                     positionY = y;
                 }
             }

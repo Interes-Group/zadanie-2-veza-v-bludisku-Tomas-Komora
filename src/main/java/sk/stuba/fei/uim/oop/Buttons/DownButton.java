@@ -10,31 +10,34 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DownButton extends JButton implements ActionListener {
-    private Game newGame;
+    private Game game;
+    private final int path=1;
+    private final int exit=2;
+    private final int player=3;
 
     public DownButton(Game game){
         super("↓");
-        this.newGame=game;
+        this.game =game;
         addActionListener(this);
         setFocusable(false);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       int positionX= newGame.getPlayerPositionX();
-       int positionY= newGame.getPlayerPositionY();
-            if (newGame.getPlayerPositionX()  + 1 < 13) {
-                if (newGame.getMaze()[positionX + 1][positionY] == 1 || newGame.getMaze()[positionX + 1][positionY] == 2) {
-                    newGame.getMaze()[positionX][positionY] = 1;
-                    newGame.getMaze()[positionX + 1][positionY] = 3;
+       int positionX= game.getPlayerPositionX();
+       int positionY= game.getPlayerPositionY();
+            if (game.getPlayerPositionX()  + 1 < 13) {
+                if (game.getMaze()[positionX + 1][positionY] == path || game.getMaze()[positionX + 1][positionY] == exit) {
+                    game.getMaze()[positionX][positionY] = path;
+                    game.getMaze()[positionX + 1][positionY] = player;
 
                 }
 
             }
 
-        if (newGame.getMaze()[12][11] == 3) {
-            newGame.generateMaze();
-            newGame.setGameWins(newGame.getGameWins()+1);
+        if (game.getMaze()[12][11] == player) {
+            game.generateMaze();
+            game.setGameWins(game.getGameWins()+1);
         }
 
     }

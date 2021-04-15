@@ -11,23 +11,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UpButton extends JButton implements ActionListener {
-    private Game newGame;
+    private Game game;
+    private final int path=1;
+    private final int exit=2;
+    private final int player=3;
     public UpButton(Game game){
         super("↑");
-        this.newGame=game;
+        this.game =game;
         addActionListener(this);
         setFocusable(false);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int positionX=newGame.getPlayerPositionX();
-        int positionY = newGame.getPlayerPositionY();
+        int positionX= game.getPlayerPositionX();
+        int positionY = game.getPlayerPositionY();
 
         if (positionX - 1 >= 0) {
-            if (newGame.getMaze()[positionX - 1][positionY] == 1 || newGame.getMaze()[positionX - 1][positionY] == 2) {
-                newGame.getMaze()[positionX][positionY] = 1;
-                newGame.getMaze()[positionX - 1][positionY] = 3;
+            if (game.getMaze()[positionX - 1][positionY] == path || game.getMaze()[positionX - 1][positionY] == exit) {
+                game.getMaze()[positionX][positionY] = path;
+                game.getMaze()[positionX - 1][positionY] = player;
 
             }
         }

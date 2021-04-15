@@ -2,18 +2,18 @@ package sk.stuba.fei.uim.oop.Buttons;
 
 
 import sk.stuba.fei.uim.oop.MazeGame.Game;
-import sk.stuba.fei.uim.oop.MazeGame.MazeGenerator;
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GenerateButton extends JButton implements ActionListener {
-    private Game newGame;
+    private Game game;
 
     public GenerateButton(Game game){
         super("Generate");
-        this.newGame=game;
+        this.game =game;
         addActionListener(this);
         setFocusable(false);
     }
@@ -21,8 +21,8 @@ public class GenerateButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        newGame.generateMaze();
-        newGame.setGameWins(0);
+        game.generateMaze();
+        game.setGameWins(0);
     }
 }
 

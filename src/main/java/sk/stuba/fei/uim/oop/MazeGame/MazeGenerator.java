@@ -4,22 +4,19 @@ import java.util.ArrayList;
 import java.util.Stack;
 import java.util.Random;
 
-//number in maze 2d array
-//0-wall
-//1-path
-//3-player
-//4-moving with mouse place where i can go
 public class MazeGenerator {
-
+    private final int wall=0;
+    private final int path=1;
+    private final int exit=2;
+    private final int player=3;
     private Stack<Node> stack = new Stack<>();
     private Random rand = new Random();
     private int[][] mazeIntro;
-    private int dimension;
+    private int dimension=11;
     
     private int[][] maze;
     public MazeGenerator() {
         mazeIntro = new int[11][11];
-        dimension = 11;
         generateMaze();
         getMaze();
 
@@ -28,32 +25,30 @@ public class MazeGenerator {
     
     public void generateMazeKernel() {
         stack.push(new Node(0,0));
+        stack.push(new Node(10,10));
         while (!stack.empty()) {
             Node next = stack.pop();
             if (validNextNode(next)) {
-                mazeIntro[next.y][next.x] = 1;
+                mazeIntro[next.y][next.x] = path;
                 ArrayList<Node> neighbors = findNeighbors(next);
                 randomlyAddNodesToStack(neighbors);
             }
         }
-
     }
 
     private void generateMaze(){
         generateMazeKernel();
         maze=new int[13][13];
         for(int i=0;i<11;i++){
-            maze[0][i]=0;
-            maze[11][i]=0;
+            maze[0][i]=wall;
+            maze[11][i]=wall;
         }
-        maze[0][1]=3;
-        maze[12][11]=1;
+
         for(int x=1;x<11+1;x++) {
             System.arraycopy(mazeIntro[x - 1], 0, maze[x], 1, 11 + 1 - 1);
         }
-        if(maze[11][11]==0) {
-            maze[11][11]=1;
-        }
+        maze[1][1]=player;
+        maze[12][11]=exit;
 
     }
 
@@ -67,12 +62,12 @@ public class MazeGenerator {
         int numNeighboringOnes = 0;
         for (int y = node.y-1; y < node.y+2; y++) {
             for (int x = node.x-1; x < node.x+2; x++) {
-                if (pointOnGrid(x, y) && pointNotNode(node, x, y) && mazeIntro[y][x] == 1) {
+                if (pointOnGrid(x, y) && pointNotNode(node, x, y) && mazeIntro[y][x] == path) {
                     numNeighboringOnes++;
                 }
             }
         }
-        return (numNeighboringOnes < 3) && mazeIntro[node.y][node.x] != 1;
+        return (numNeighboringOnes < 3) && mazeIntro[node.y][node.x] != path;
     }
 
     private void randomlyAddNodesToStack(ArrayList<Node> nodes) {

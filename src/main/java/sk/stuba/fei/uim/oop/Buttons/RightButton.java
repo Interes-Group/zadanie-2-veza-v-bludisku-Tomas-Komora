@@ -7,22 +7,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class RightButton extends JButton implements ActionListener {
-    private Game newGame;
+    private Game game;
+    private final int path=1;
+    private final int player=3;
+
     public RightButton(Game game){
         super("→");
-        newGame=game;
+        this.game =game;
         addActionListener(this);
         setFocusable(false);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int positionX= newGame.getPlayerPositionX();
-        int positionY = newGame.getPlayerPositionY();
+        int positionX= game.getPlayerPositionX();
+        int positionY = game.getPlayerPositionY();
 
-            if(newGame.getMaze()[positionX][positionY+1]==1 && positionY+1>=0){
-                newGame.getMaze()[positionX][positionY]=1;
-                newGame.getMaze()[positionX][positionY+1]=3;
+            if(game.getMaze()[positionX][positionY+1]==path){
+                game.getMaze()[positionX][positionY]=path;
+                game.getMaze()[positionX][positionY+1]=player;
             }
 
     }
