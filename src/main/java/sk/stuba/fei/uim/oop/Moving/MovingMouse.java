@@ -15,6 +15,7 @@ public class MovingMouse extends Canvas implements MouseListener, MouseMotionLis
     private final int path=1;
     private final int exit=2;
     private final int player=3;
+    private final int validMove=4;
     public MovingMouse(Game game){
         this.game =game;
         addMouseListener(this);
@@ -36,9 +37,9 @@ public class MovingMouse extends Canvas implements MouseListener, MouseMotionLis
             game.getMaze()[e.getY()/30][e.getX()/30]=player;
             numberOfClick++;
         }
-        if(game.getMaze()[12][11]==player){
+        if(game.getMaze()[11][11]==player){
             game.generateMaze();
-            game.setGameWins(0);
+            game.setGameWins(game.getGameWins()+1);
         }
 
     }
@@ -72,25 +73,25 @@ public class MovingMouse extends Canvas implements MouseListener, MouseMotionLis
     private int posY;
     @Override
     public void mouseMoved(MouseEvent e) {
-        if (numberOfClick % 2 == 1) {
-            posX = e.getX() / 30;
-            posY = e.getY() / 30;
+        posX = e.getX() / 30;
+        posY = e.getY() / 30;
+        if (numberOfClick % 2 == 1 && posX > 0 && posY > 0 && posY < 12 && posX < 12 ) {
             ArrayList<Integer[]> position= isValidMove();
-            if (game.getMaze()[posY][posX] == 1 || game.getMaze()[posY][posX] == 2) {
+            if (game.getMaze()[posY][posX] == path || game.getMaze()[posY][posX] == exit) {
                 for(Integer[] integers : position)
                     if(integers[0]==posY && integers[1]==posX) {
-                        game.getMaze()[posY][posX] = 4;
+                        game.getMaze()[posY][posX] = validMove;
                     }
             }
-            if (posX > 0 && posY > 0 && posY < 12 && posX < 12) {
-                if (game.getMaze()[posY][posX - 1] == 4) {
-                    game.getMaze()[posY][posX - 1] = 1;
-                } else if (game.getMaze()[posY][posX + 1] == 4) {
-                    game.getMaze()[posY][posX + 1] = 1;
-                } else if (game.getMaze()[posY - 1][posX] == 4) {
-                    game.getMaze()[posY - 1][posX] = 1;
-                } else if (game.getMaze()[posY + 1][posX] == 4) {
-                    game.getMaze()[posY + 1][posX] = 1;
+            if(posX > 0 && posY > 0 && posY < 12 && posX < 12 ) {
+                if (game.getMaze()[posY][posX - 1] == validMove) {
+                    game.getMaze()[posY][posX - 1] = path;
+                } else if (game.getMaze()[posY][posX + 1] == validMove) {
+                    game.getMaze()[posY][posX + 1] = path;
+                } else if (game.getMaze()[posY - 1][posX] == validMove) {
+                    game.getMaze()[posY - 1][posX] = path;
+                } else if (game.getMaze()[posY + 1][posX] == validMove) {
+                    game.getMaze()[posY + 1][posX] = path;
                 }
             }
 

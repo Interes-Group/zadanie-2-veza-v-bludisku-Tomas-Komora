@@ -64,6 +64,10 @@ public class MovingKeyboard extends JPanel implements KeyListener {
 
             }
         }
+        if (game.getMaze()[11][11] == player) {
+            game.generateMaze();
+            game.setGameWins(game.getGameWins()+1);
+        }
     }
     private void moveDown(){
         int positionX= game.getPlayerPositionX();
@@ -75,7 +79,7 @@ public class MovingKeyboard extends JPanel implements KeyListener {
             }
 
         }
-        if (game.getMaze()[12][11] == player) {
+        if (game.getMaze()[11][11] == player) {
             game.generateMaze();
             game.setGameWins(game.getGameWins()+1);
         }
@@ -89,6 +93,10 @@ public class MovingKeyboard extends JPanel implements KeyListener {
                 game.getMaze()[positionX][positionY]=path;
                 game.getMaze()[positionX][positionY-1]=player;
             }
+        if (game.getMaze()[11][11] == player) {
+            game.generateMaze();
+            game.setGameWins(game.getGameWins()+1);
+        }
 
 
     }
@@ -96,9 +104,13 @@ public class MovingKeyboard extends JPanel implements KeyListener {
         int positionX= game.getPlayerPositionX();
         int positionY = game.getPlayerPositionY();
 
-        if(game.getMaze()[positionX][positionY+1]==path){
+        if(game.getMaze()[positionX][positionY+1]==path || game.getMaze()[positionX][positionY+1] == exit){
             game.getMaze()[positionX][positionY]=path;
             game.getMaze()[positionX][positionY+1]=player;
+        }
+        if (game.getMaze()[11][11] == player) {
+            game.generateMaze();
+            game.setGameWins(game.getGameWins()+1);
         }
 
     }

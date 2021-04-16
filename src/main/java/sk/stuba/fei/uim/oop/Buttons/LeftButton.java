@@ -10,6 +10,7 @@ public class LeftButton extends JButton implements ActionListener {
     private Game game;
     private final int path=1;
     private final int player=3;
+    private final int exit=2;
 
     public LeftButton(Game game){
         super("←");
@@ -24,10 +25,14 @@ public class LeftButton extends JButton implements ActionListener {
         int positionY = game.getPlayerPositionY();
 
 
-            if(game.getMaze()[positionX][positionY-1]==path && positionY-1>=0){
-                game.getMaze()[positionX][positionY]=path;
-                game.getMaze()[positionX][positionY-1]=player;
-            }
+        if(game.getMaze()[positionX][positionY-1]==path && positionY-1>=0 || game.getMaze()[positionX][positionY-1] == exit){
+            game.getMaze()[positionX][positionY]=path;
+            game.getMaze()[positionX][positionY-1]=player;
+        }
+        if (game.getMaze()[11][11] == player) {
+            game.generateMaze();
+            game.setGameWins(game.getGameWins()+1);
+        }
 
     }
 }

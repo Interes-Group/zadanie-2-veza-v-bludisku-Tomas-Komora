@@ -35,7 +35,7 @@ public class DownButton extends JButton implements ActionListener {
 
             }
 
-        if (game.getMaze()[12][11] == player) {
+        if (game.getMaze()[11][11] == player) {
             game.generateMaze();
             game.setGameWins(game.getGameWins()+1);
         }

@@ -48,7 +48,7 @@ public class MazeGenerator {
             System.arraycopy(mazeIntro[x - 1], 0, maze[x], 1, 11 + 1 - 1);
         }
         maze[1][1]=player;
-        maze[12][11]=exit;
+        maze[11][11]=exit;
 
     }
 

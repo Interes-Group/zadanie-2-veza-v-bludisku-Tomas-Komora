@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 public class RightButton extends JButton implements ActionListener {
     private Game game;
     private final int path=1;
+    private final int exit =2;
     private final int player=3;
 
     public RightButton(Game game){
@@ -22,11 +23,13 @@ public class RightButton extends JButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         int positionX= game.getPlayerPositionX();
         int positionY = game.getPlayerPositionY();
-
-            if(game.getMaze()[positionX][positionY+1]==path){
-                game.getMaze()[positionX][positionY]=path;
-                game.getMaze()[positionX][positionY+1]=player;
-            }
-
+        if(game.getMaze()[positionX][positionY+1]==path  || game.getMaze()[positionX][positionY + 1] == exit){
+            game.getMaze()[positionX][positionY]=path;
+            game.getMaze()[positionX][positionY+1]=player;
+        }
+        if (game.getMaze()[11][11] == player) {
+            game.generateMaze();
+            game.setGameWins(game.getGameWins()+1);
+        }
     }
 }
