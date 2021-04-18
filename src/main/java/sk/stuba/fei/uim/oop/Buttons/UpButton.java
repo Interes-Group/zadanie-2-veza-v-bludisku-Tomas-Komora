@@ -34,6 +34,10 @@ public class UpButton extends JButton implements ActionListener {
 
             }
         }
+        if (game.getMaze()[game.getMazeGenerator().getExitY()][game.getMazeGenerator().getExitX()] == player) {
+            game.generateMaze();
+            game.setGameWins(game.getGameWins()+1);
+        }
 
     }
 }

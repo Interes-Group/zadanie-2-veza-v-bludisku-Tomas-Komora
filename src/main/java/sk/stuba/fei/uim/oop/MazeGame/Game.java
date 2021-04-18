@@ -17,15 +17,16 @@ public class Game extends JFrame {
     public Game(){
         mazeGenerator = new MazeGenerator();
         drawGUI();
-
-
     }
     public void generateMaze(){
         mazeGenerator = new MazeGenerator();
     }
     public int[][] getMaze(){
         return mazeGenerator.getMaze();
+    }
 
+    public MazeGenerator getMazeGenerator(){
+        return mazeGenerator;
     }
 
     public int getGameWins() {

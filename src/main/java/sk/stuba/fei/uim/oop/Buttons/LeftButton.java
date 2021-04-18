@@ -29,7 +29,7 @@ public class LeftButton extends JButton implements ActionListener {
             game.getMaze()[positionX][positionY]=path;
             game.getMaze()[positionX][positionY-1]=player;
         }
-        if (game.getMaze()[11][11] == player) {
+        if (game.getMaze()[game.getMazeGenerator().getExitY()][game.getMazeGenerator().getExitX()] == player) {
             game.generateMaze();
             game.setGameWins(game.getGameWins()+1);
         }

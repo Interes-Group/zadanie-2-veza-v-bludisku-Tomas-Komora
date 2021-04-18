@@ -58,13 +58,13 @@ public class MovingKeyboard extends JPanel implements KeyListener {
         int positionY = game.getPlayerPositionY();
 
         if (positionX - 1 >= wall) {
-            if (game.getMaze()[positionX - 1][positionY] == path ) {
+            if (game.getMaze()[positionX - 1][positionY] == path || game.getMaze()[positionX - 1][positionY] == exit) {
                 game.getMaze()[positionX][positionY] = path;
                 game.getMaze()[positionX - 1][positionY] = player;
 
             }
         }
-        if (game.getMaze()[11][11] == player) {
+        if (game.getMaze()[game.getMazeGenerator().getExitY()][game.getMazeGenerator().getExitX()] == player) {
             game.generateMaze();
             game.setGameWins(game.getGameWins()+1);
         }
@@ -79,7 +79,7 @@ public class MovingKeyboard extends JPanel implements KeyListener {
             }
 
         }
-        if (game.getMaze()[11][11] == player) {
+        if (game.getMaze()[game.getMazeGenerator().getExitY()][game.getMazeGenerator().getExitX()] == player) {
             game.generateMaze();
             game.setGameWins(game.getGameWins()+1);
         }
@@ -89,11 +89,11 @@ public class MovingKeyboard extends JPanel implements KeyListener {
         int positionY = game.getPlayerPositionY();
 
 
-            if(game.getMaze()[positionX][positionY-1]==path && positionY-1>=0){
+            if((game.getMaze()[positionX][positionY-1]==path || game.getMaze()[positionX][positionY-1] == exit)&& positionY-1>=0){
                 game.getMaze()[positionX][positionY]=path;
                 game.getMaze()[positionX][positionY-1]=player;
             }
-        if (game.getMaze()[11][11] == player) {
+        if (game.getMaze()[game.getMazeGenerator().getExitY()][game.getMazeGenerator().getExitX()] == player) {
             game.generateMaze();
             game.setGameWins(game.getGameWins()+1);
         }
@@ -108,7 +108,7 @@ public class MovingKeyboard extends JPanel implements KeyListener {
             game.getMaze()[positionX][positionY]=path;
             game.getMaze()[positionX][positionY+1]=player;
         }
-        if (game.getMaze()[11][11] == player) {
+        if (game.getMaze()[game.getMazeGenerator().getExitY()][game.getMazeGenerator().getExitX()] == player) {
             game.generateMaze();
             game.setGameWins(game.getGameWins()+1);
         }

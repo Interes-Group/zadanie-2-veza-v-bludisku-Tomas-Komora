@@ -21,19 +21,30 @@ public class MazeGenerator {
         getMaze();
 
     }
-
+    private int exitY;
+    private int exitX;
     
     public void generateMazeKernel() {
         stack.push(new Node(0,0));
-        stack.push(new Node(10,10));
         while (!stack.empty()) {
             Node next = stack.pop();
             if (validNextNode(next)) {
                 mazeIntro[next.y][next.x] = path;
                 ArrayList<Node> neighbors = findNeighbors(next);
                 randomlyAddNodesToStack(neighbors);
+                exitX= next.x;
+                exitY= next.y;
             }
         }
+        mazeIntro[exitY][exitX]=exit;
+    }
+
+    public int getExitY() {
+        return exitY+1;
+    }
+
+    public int getExitX() {
+        return exitX+1;
     }
 
     private void generateMaze(){
@@ -48,7 +59,7 @@ public class MazeGenerator {
             System.arraycopy(mazeIntro[x - 1], 0, maze[x], 1, 11 + 1 - 1);
         }
         maze[1][1]=player;
-        maze[11][11]=exit;
+       // maze[11][11]=exit;
 
     }
 

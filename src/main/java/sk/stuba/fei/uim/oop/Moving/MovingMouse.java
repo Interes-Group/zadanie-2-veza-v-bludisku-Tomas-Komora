@@ -37,7 +37,7 @@ public class MovingMouse extends Canvas implements MouseListener, MouseMotionLis
             game.getMaze()[e.getY()/30][e.getX()/30]=player;
             numberOfClick++;
         }
-        if(game.getMaze()[11][11]==player){
+        if(game.getMaze()[game.getMazeGenerator().getExitY()][game.getMazeGenerator().getExitX()] == player){
             game.generateMaze();
             game.setGameWins(game.getGameWins()+1);
         }
@@ -98,8 +98,8 @@ public class MovingMouse extends Canvas implements MouseListener, MouseMotionLis
                     game.getMaze()[posY + 1][posX] = path;
                 }
             }
-            if(game.getMaze()[11][11]!=validMove)
-                game.getMaze()[11][11]=exit;
+            if(game.getMaze()[game.getMazeGenerator().getExitY()][game.getMazeGenerator().getExitX()]!=validMove)
+                game.getMaze()[game.getMazeGenerator().getExitY()][game.getMazeGenerator().getExitX()] = exit;
 
         }
     }
