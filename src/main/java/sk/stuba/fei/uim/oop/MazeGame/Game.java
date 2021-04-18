@@ -68,26 +68,26 @@ public class Game extends JFrame {
         return panel;
     }
 
-    public int getPlayerPositionX(){
-        int positionX=0;
-        for(int x=0;x<13;x++){
-            for(int y=0;y<13;y++){
-                if(mazeGenerator.getMaze()[x][y]==player)
-                    positionX= x;
-            }
-        }
-        return positionX;
-    }
     public int getPlayerPositionY(){
-        int positionY = 0;
-        for(int x=0;x<13;x++){
-            for(int y=0;y<13;y++){
-                if(mazeGenerator.getMaze()[x][y]==player) {
+        int positionY =0;
+        for(int y = 0; y <13; y++){
+            for(int x = 0; x <13; x++){
+                if(mazeGenerator.getMaze()[y][x]==player)
                     positionY = y;
-                }
             }
         }
         return positionY;
+    }
+    public int getPlayerPositionX(){
+        int positionX = 0;
+        for(int y = 0; y <13; y++){
+            for(int x = 0; x <13; x++){
+                if(mazeGenerator.getMaze()[y][x]==player) {
+                    positionX = x;
+                }
+            }
+        }
+        return positionX;
     }
 
 

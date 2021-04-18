@@ -11,6 +11,7 @@ public class MyCanvas extends Canvas {
     private final int path=1;
     private final int exit=2;
     private final int player=3;
+    private final int validMove=4;
 
     public MyCanvas(Game game) {
         this.game =game;
@@ -42,7 +43,7 @@ public class MyCanvas extends Canvas {
                     g.setColor(Color.green);
                     g.fillRect(z*x,s*y,x,y);
                 }
-                else if(game.getMaze()[s][z]==4){
+                else if(game.getMaze()[s][z]==validMove){
                     g.setColor(Color.GRAY);
                     g.fillRect(z*x,s*y,x,y);
                 }

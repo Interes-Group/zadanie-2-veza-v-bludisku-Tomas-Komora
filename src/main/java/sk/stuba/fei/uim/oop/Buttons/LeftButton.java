@@ -21,13 +21,13 @@ public class LeftButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int positionX= game.getPlayerPositionX();
         int positionY = game.getPlayerPositionY();
+        int positionX = game.getPlayerPositionX();
 
 
-        if(game.getMaze()[positionX][positionY-1]==path && positionY-1>=0 || game.getMaze()[positionX][positionY-1] == exit){
-            game.getMaze()[positionX][positionY]=path;
-            game.getMaze()[positionX][positionY-1]=player;
+        if(game.getMaze()[positionY][positionX -1]==path && positionX -1>=0 || game.getMaze()[positionY][positionX -1] == exit){
+            game.getMaze()[positionY][positionX]=path;
+            game.getMaze()[positionY][positionX -1]=player;
         }
         if (game.getMaze()[game.getMazeGenerator().getExitY()][game.getMazeGenerator().getExitX()] == player) {
             game.generateMaze();

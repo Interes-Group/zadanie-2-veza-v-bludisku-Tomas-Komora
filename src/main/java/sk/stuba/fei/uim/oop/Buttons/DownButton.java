@@ -2,7 +2,6 @@ package sk.stuba.fei.uim.oop.Buttons;
 
 
 import sk.stuba.fei.uim.oop.MazeGame.Game;
-import sk.stuba.fei.uim.oop.MazeGame.MazeGenerator;
 
 
 import javax.swing.*;
@@ -26,12 +25,12 @@ public class DownButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       int positionX= game.getPlayerPositionX();
-       int positionY= game.getPlayerPositionY();
-            if (game.getPlayerPositionX()  + 1 < 13) {
-                if (game.getMaze()[positionX + 1][positionY] == path || game.getMaze()[positionX + 1][positionY] == exit) {
-                    game.getMaze()[positionX][positionY] = path;
-                    game.getMaze()[positionX + 1][positionY] = player;
+       int positionY = game.getPlayerPositionY();
+       int positionX = game.getPlayerPositionX();
+            if (game.getPlayerPositionY()  + 1 < 13) {
+                if (game.getMaze()[positionY + 1][positionX] == path || game.getMaze()[positionY + 1][positionX] == exit) {
+                    game.getMaze()[positionY][positionX] = path;
+                    game.getMaze()[positionY + 1][positionX] = player;
 
                 }
 

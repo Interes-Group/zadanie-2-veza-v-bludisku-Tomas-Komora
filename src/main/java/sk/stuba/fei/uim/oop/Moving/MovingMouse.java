@@ -25,8 +25,8 @@ public class MovingMouse extends Canvas implements MouseListener, MouseMotionLis
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        int playerPositionX= game.getPlayerPositionX();
-        int playerPositionY= game.getPlayerPositionY();
+        int playerPositionX= game.getPlayerPositionY();
+        int playerPositionY= game.getPlayerPositionX();
         if(playerPositionX*30<=e.getY() && (playerPositionX+1)*30>=e.getY() &&
                 playerPositionY*30<=e.getX() && (playerPositionY+1)*30>=e.getX()) {
             numberOfClick++;
@@ -107,48 +107,48 @@ public class MovingMouse extends Canvas implements MouseListener, MouseMotionLis
 
 
     private ArrayList<Integer[]> isValidMove(){
-        int playerPositionX = game.getPlayerPositionX();
         int playerPositionY = game.getPlayerPositionY();
+        int playerPositionX = game.getPlayerPositionX();
         ArrayList<Integer[]> validMove = new ArrayList<>();
         while(true){
-            if(game.getMaze()[playerPositionX][playerPositionY]==wall)
+            if(game.getMaze()[playerPositionY][playerPositionX]==wall)
                 break;
-            if(playerPositionX==12){
-                validMove.add(new Integer[]{playerPositionX,playerPositionY});
+            if(playerPositionY ==12){
+                validMove.add(new Integer[]{playerPositionY, playerPositionX});
                 break;
             }
-            validMove.add(new Integer[]{playerPositionX,playerPositionY});
-            playerPositionX++;
+            validMove.add(new Integer[]{playerPositionY, playerPositionX});
+            playerPositionY++;
 
         }
-        playerPositionX= game.getPlayerPositionX();
-        if(playerPositionX!=wall) {
+        playerPositionY = game.getPlayerPositionY();
+        if(playerPositionY !=wall) {
             while (true) {
-                if (game.getMaze()[playerPositionX][playerPositionY] == wall)
+                if (game.getMaze()[playerPositionY][playerPositionX] == wall)
                     break;
-                if(playerPositionX==wall){
-                    validMove.add(new Integer[]{playerPositionX,playerPositionY});
+                if(playerPositionY ==wall){
+                    validMove.add(new Integer[]{playerPositionY, playerPositionX});
                     break;
                 }
-                validMove.add(new Integer[]{playerPositionX,playerPositionY});
-                playerPositionX--;
+                validMove.add(new Integer[]{playerPositionY, playerPositionX});
+                playerPositionY--;
             }
         }
-        playerPositionX= game.getPlayerPositionX();
-        playerPositionY= game.getPlayerPositionY();
+        playerPositionY = game.getPlayerPositionY();
+        playerPositionX = game.getPlayerPositionX();
         do {
-            validMove.add(new Integer[]{playerPositionX, playerPositionY});
-            playerPositionY++;
-        } while (game.getMaze()[playerPositionX][playerPositionY] != wall);
-        playerPositionY= game.getPlayerPositionY();
-        if(playerPositionY!=wall){
+            validMove.add(new Integer[]{playerPositionY, playerPositionX});
+            playerPositionX++;
+        } while (game.getMaze()[playerPositionY][playerPositionX] != wall);
+        playerPositionX = game.getPlayerPositionX();
+        if(playerPositionX !=wall){
             do {
-                validMove.add(new Integer[]{playerPositionX, playerPositionY});
-                playerPositionY--;
-            } while (game.getMaze()[playerPositionX][playerPositionY] != wall);
+                validMove.add(new Integer[]{playerPositionY, playerPositionX});
+                playerPositionX--;
+            } while (game.getMaze()[playerPositionY][playerPositionX] != wall);
         }
         for(int i =0; i<validMove.size();i++){
-            if(validMove.get(i)[0]== game.getPlayerPositionX() && validMove.get(i)[1]== game.getPlayerPositionY())
+            if(validMove.get(i)[0]== game.getPlayerPositionY() && validMove.get(i)[1]== game.getPlayerPositionX())
                 validMove.remove(validMove.get(i));
         }
         return validMove;

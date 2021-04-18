@@ -21,11 +21,11 @@ public class RightButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int positionX= game.getPlayerPositionX();
         int positionY = game.getPlayerPositionY();
-        if(game.getMaze()[positionX][positionY+1]==path  || game.getMaze()[positionX][positionY + 1] == exit){
-            game.getMaze()[positionX][positionY]=path;
-            game.getMaze()[positionX][positionY+1]=player;
+        int positionX = game.getPlayerPositionX();
+        if(game.getMaze()[positionY][positionX +1]==path  || game.getMaze()[positionY][positionX + 1] == exit){
+            game.getMaze()[positionY][positionX]=path;
+            game.getMaze()[positionY][positionX +1]=player;
         }
         if (game.getMaze()[game.getMazeGenerator().getExitY()][game.getMazeGenerator().getExitX()] == player) {
             game.generateMaze();
