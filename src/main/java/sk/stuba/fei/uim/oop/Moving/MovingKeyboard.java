@@ -90,7 +90,7 @@ public class MovingKeyboard extends JPanel implements KeyListener {
         int positionX = game.getPlayerPositionX();
 
 
-            if((game.getMaze()[positionY][positionX -1]==path || game.getMaze()[positionY][positionX -1] == exit)&& positionX -1>=0){
+            if((game.getMaze()[positionY][positionX -1]==path || game.getMaze()[positionY][positionX -1] == exit)){
                 game.getMaze()[positionY][positionX]=path;
                 game.getMaze()[positionY][positionX -1]=player;
             }
@@ -98,7 +98,6 @@ public class MovingKeyboard extends JPanel implements KeyListener {
             game.generateMaze();
             game.setGameWins(game.getGameWins()+1);
         }
-
 
     }
     private void moveRight(){

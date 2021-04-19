@@ -75,15 +75,12 @@ public class MovingMouse extends Canvas implements MouseListener, MouseMotionLis
     public void mouseMoved(MouseEvent e) {
         posX = e.getX() / 30;
         posY = e.getY() / 30;
-        boolean isExit= false;
+
         if (numberOfClick % 2 == 1 && posX > 0 && posY > 0 && posY < 12 && posX < 12 ) {
             ArrayList<Integer[]> position= isValidMove();
             if (game.getMaze()[posY][posX] == path || game.getMaze()[posY][posX] == exit) {
                 for(Integer[] integers : position)
                     if(integers[0]==posY && integers[1]==posX) {
-                        if(game.getMaze()[posY][posX] ==exit){
-                            isExit=true;
-                        }
                         game.getMaze()[posY][posX] = validMove;
                     }
             }

@@ -12,7 +12,7 @@ public class MazeGenerator {
     private Stack<Node> stack = new Stack<>();
     private Random rand = new Random();
     private int[][] mazeIntro;
-    private int dimension=11;
+
     
     private int[][] maze;
     public MazeGenerator() {
@@ -102,7 +102,7 @@ public class MazeGenerator {
 
 
     private Boolean pointOnGrid(int x, int y) {
-        return x >= 0 && y >= 0 && x < dimension && y < dimension;
+        return x >= 0 && y >= 0 && x < 11 && y < 11;
     }
 
     private Boolean pointNotCorner(Node node, int x, int y) {
