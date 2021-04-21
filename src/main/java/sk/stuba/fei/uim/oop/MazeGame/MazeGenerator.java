@@ -12,6 +12,7 @@ public class MazeGenerator {
     private Stack<Node> stack = new Stack<>();
     private Random rand = new Random();
     private int[][] mazeIntro;
+    
 
     
     private int[][] maze;
@@ -71,7 +72,9 @@ public class MazeGenerator {
         int numNeighboringOnes = 0;
         for (int y = node.y-1; y < node.y+2; y++) {
             for (int x = node.x-1; x < node.x+2; x++) {
-                if (pointOnGrid(x, y) && pointNotNode(node, x, y) && mazeIntro[y][x] == path) {
+                if ((x >= 0 && y >= 0 && x < 11 && y < 11)
+                        && !(x == node.x && y == node.y)
+                        && mazeIntro[y][x] == path) {
                     numNeighboringOnes++;
                 }
             }
@@ -91,25 +94,13 @@ public class MazeGenerator {
         ArrayList<Node> neighbors = new ArrayList<>();
         for (int y = node.y-1; y < node.y+2; y++) {
             for (int x = node.x-1; x < node.x+2; x++) {
-                if (pointOnGrid(x, y) && pointNotCorner(node, x, y)
-                        && pointNotNode(node, x, y)) {
+                if ((x >= 0 && y >= 0 && x < 11 && y < 11)
+                        && (x == node.x || y == node.y)
+                        && !(x == node.x && y == node.y)) {
                     neighbors.add(new Node(x, y));
                 }
             }
         }
         return neighbors;
-    }
-
-
-    private Boolean pointOnGrid(int x, int y) {
-        return x >= 0 && y >= 0 && x < 11 && y < 11;
-    }
-
-    private Boolean pointNotCorner(Node node, int x, int y) {
-        return (x == node.x || y == node.y);
-    }
-
-    private Boolean pointNotNode(Node node, int x, int y) {
-        return !(x == node.x && y == node.y);
     }
 }

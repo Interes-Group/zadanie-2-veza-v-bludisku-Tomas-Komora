@@ -67,7 +67,6 @@ public class Game extends JFrame {
         panel.add(new RightButton(this));
         return panel;
     }
-
     public int getPlayerPositionY(){
         int positionY =0;
         for(int y = 0; y <13; y++){
