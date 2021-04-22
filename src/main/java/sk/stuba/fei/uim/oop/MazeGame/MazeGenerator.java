@@ -29,10 +29,12 @@ public class MazeGenerator {
         stack.push(new Node(0,0));
         while (!stack.empty()) {
             Node next = stack.pop();
-            if (validNextNode(next)) {
+            if (validNode(next)) {
                 mazeIntro[next.y][next.x] = path;
                 ArrayList<Node> neighbors = findNeighbors(next);
-                randomlyAddNodesToStack(neighbors);
+                while (!neighbors.isEmpty()) {
+                    stack.push(neighbors.remove(rand.nextInt(neighbors.size())));
+                }
                 exitX= next.x;
                 exitY= next.y;
             }
@@ -55,7 +57,6 @@ public class MazeGenerator {
             maze[0][i]=wall;
             maze[11][i]=wall;
         }
-
         for(int x=1;x<11+1;x++) {
             System.arraycopy(mazeIntro[x - 1], 0, maze[x], 1, 11 + 1 - 1);
         }
@@ -66,9 +67,7 @@ public class MazeGenerator {
         return maze;
     }
 
-
-
-    private boolean validNextNode(Node node) {
+    private boolean validNode(Node node) {
         int numNeighboringOnes = 0;
         for (int y = node.y-1; y < node.y+2; y++) {
             for (int x = node.x-1; x < node.x+2; x++) {
@@ -80,14 +79,6 @@ public class MazeGenerator {
             }
         }
         return (numNeighboringOnes < 3) && mazeIntro[node.y][node.x] != path;
-    }
-
-    private void randomlyAddNodesToStack(ArrayList<Node> nodes) {
-        int targetIndex;
-        while (!nodes.isEmpty()) {
-            targetIndex = rand.nextInt(nodes.size());
-            stack.push(nodes.remove(targetIndex));
-        }
     }
 
     private ArrayList<Node> findNeighbors(Node node) {
