@@ -32,7 +32,6 @@ public class MovingKeyboard extends JPanel implements KeyListener {
             moveRight();
         else if(key == KeyEvent.VK_LEFT)
             moveLeft();
-        
     }
 
     @Override
